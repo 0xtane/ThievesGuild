@@ -73,25 +73,53 @@ contract ThievesGuild {
     minLevelRequirement = 2; // summoner has to be of atleast level 2 to be bale to join the guild
   }
 
+  //Toad
+  // Wet Ear
+  // Footpad
+  // Blackcap
+  // Operative
+  // Bandit
+  // Captain
+  // Ringleader
+  // Mastermind
+  // Master Thief
+  // Oblivion ranks
+  //
+  // Pickpocket
+  // Footpad
+  // Bandit
+  // Prowler
+  // Cat Burglar
+  // Shadowfoot
+  // Master Thief
+  //Gray Fox
 
   function rankTitle(uint rank_) public pure returns(string memory) {
-    // took help from reddit
+    // took help from reddit + elderscrolls
     if (rank_ == 1) {
-        return "Apprentice";
+        return "Toad";
     } else if (rank_ == 2) {
-        return "Thief 3rd Class";
+        return "Wet Ear";
     } else if (rank_ == 3) {
-        return "Thief 2nd Class";
-    } else if (rank_ <=5 ) {
-        return "Thief 1st Class";
-    } else if (rank_ == 6) {
-        return "Junior Journeyman";
-    } else if (rank_ <= 8) {
-        return "Senior Journeyman";
-    } else if (rank_ == 9) {
-        return "Master Thief Candidate";
-    } else {
+        return "Footpad";
+    } else if (rank_ == 4 ) {
+        return "Blackcap";
+    } else if (rank_ == 5) {
+        return "Operative";
+    } else if (rank_ <= 7) {
+        return "Bandit";
+    } else if (rank_ == 8) {
+        return "Captain";
+    } else if (rank_ <= 10) {
+        return "Ringleader";
+    } else if (rank_ == 11) {
+        return "Mastermind";
+    } else if (rank_ == 12) {
+        return "Master Thief candidate";
+    } else if (rank_ <= 14) {
         return "Master Thief";
+    } else {
+        return "Gray Fox";
     }
   }
 
