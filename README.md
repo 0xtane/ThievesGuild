@@ -13,6 +13,8 @@ Guild members can do stealing quests everyday to gain guild xp, stealing quests 
 
 Loot system is yet to be fully developed but my idea was to initally seed them based on something applicant can't controll, acceptanceTime () when the acceptNewMembers functions is called ) and making loot precalculated, example: 3rd drop would be the same doesn't matter if you did it inside a block of blockhash of X or blockhash of Y, but future events like guild actions or other members doing quests could be used to seed the randomness to re-compute the loot, so you couldn't just see your future drops ( well you could, but that would be calculated on current state of the contract, and if it's calculated based on future state which is not to 1 user's control that would be as close to random as i can think of ). That way we get rid of precomputability with current dice rolling mechanism which is dependant on blockhash as salt. Ofcourse nothing would be better than have Chainlink/Band VRF at this moment , but I think my solution fixed the problem in a quite innovative way ( if anyone finds a hole in this logic i would love to discuss it with you ).
 
+TL:DR: Loot drops won't depend on the blockhash as salt,but they can be precomputed by shadowy super coders, but the actions in the future will recalculate future loot drops so it will keep them random. Yes someone could wait few days (vs few blocks in in blockhash seeding) for the state of whatever's seeding the loot to be changed, but that's an opportunity cost of being idle. 
+
 
 ---- detailed process of current implementation ----
 
