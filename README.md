@@ -30,35 +30,35 @@ and your summoner needs to be atleast Level 2 to be able to submit an applicatio
 2) Guild master can at any point , unless he is on actionCooldown call acceptNewMembers(uint amount) with a restriction: require(amount < 50 || amount < guildMembers.length ,"Cant onboard too much people at once"); ( subject to change). After function is initiated it loops through all applications and whichever are of atleast x hours old it takes tribute payment in form of Gold, accepts and enrolls the new members with rank 1: "toad". Application which were not old enough ( too fresh) will be included in the next wave. Whoever was qualified but didn't have gold approved at the time is disqualified and taken off applicant list ( although they are free to apply at any point after ). Whatever gold is gathered from tributes goes to guild treasury for guild master to manage for the benefit of the whole guild ( if he won't make good decision, he might be conspired against and killed/overthrown ).
 
 3) After being enrolled you'll be met with a list of quests that will trigger different cooldown periods and will yield different XP amount aswell. Some quests are unlocked only for certain ranks. Quests have loot and some of them give bonus to xp multipliers or some guild specific benefits. Every other rank requires rarityXp (different from guild xp) to be spent, increasing with each level.
-  if ((_rank % 2) == 0) {
-    rarityContract.spend_xp(_summoner,_rank * xp_cost);
-  }
+    if ((_rank % 2) == 0) {
+      rarityContract.spend_xp(_summoner,_rank * xp_cost);
+    }
 
 
 
 Current Rank titles: ( forgive my lazyness )
 
-  if (rank_ == 1) {
-      return "Toad";
-  } else if (rank_ == 2) {
-      return "Wet Ear";
-  } else if (rank_ == 3) {
-      return "Footpad";
-  } else if (rank_ == 4 ) {
-      return "Blackcap";
-  } else if (rank_ == 5) {
-      return "Operative";
-  } else if (rank_ <= 7) {
-      return "Bandit";
-  } else if (rank_ == 8) {
-      return "Captain";
-  } else if (rank_ <= 10) {
-      return "Ringleader";
-  } else if (rank_ == 11) {
-      return "Mastermind";
-  } else if (rank_ == 12) {
-      return "Master Thief candidate";
-  } else if (rank_ <= 14) {
-      return "Master Thief";
-  } else {
-      return "Gray Fox";
+    if (rank_ == 1) {
+        return "Toad";
+    } else if (rank_ == 2) {
+        return "Wet Ear";
+    } else if (rank_ == 3) {
+        return "Footpad";
+    } else if (rank_ == 4 ) {
+        return "Blackcap";
+    } else if (rank_ == 5) {
+        return "Operative";
+    } else if (rank_ <= 7) {
+        return "Bandit";
+    } else if (rank_ == 8) {
+        return "Captain";
+    } else if (rank_ <= 10) {
+        return "Ringleader";
+    } else if (rank_ == 11) {
+        return "Mastermind";
+    } else if (rank_ == 12) {
+        return "Master Thief candidate";
+    } else if (rank_ <= 14) {
+        return "Master Thief";
+    } else {
+        return "Gray Fox";
