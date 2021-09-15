@@ -1,5 +1,7 @@
 # ThievesGuild
 Disclaimer: work in progress
+<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8ec407e2-5c54-47e1-8e49-e153374f8444/d67nb14-f59acde7-856d-4eb6-a001-694f00860758.png/v1/fill/w_999,h_800,q_70,strp/thieves_guild_by_haekate_d67nb14-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODIwIiwicGF0aCI6IlwvZlwvOGVjNDA3ZTItNWM1NC00N2UxLThlNDktZTE1MzM3NGY4NDQ0XC9kNjduYjE0LWY1OWFjZGU3LTg1NmQtNGViNi1hMDAxLTY5NGYwMDg2MDc1OC5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.9qtDCR2CjnWmKov0kOKn_tArLdxKKNYWzcVUtG4c15c"/>
+Author: <a href="https://www.deviantart.com/haekate">Haekate</a>
 
 <h2>Brief description:</h2>
 
@@ -30,6 +32,7 @@ and your summoner needs to be atleast Level 2 to be able to submit an applicatio
 2) Guild master can at any point , unless he is on actionCooldown call acceptNewMembers(uint amount) with a restriction: require(amount < 50 || amount < guildMembers.length ,"Cant onboard too much people at once"); ( subject to change). After function is initiated it loops through all applications and whichever are of atleast x hours old it takes tribute payment in form of Gold, accepts and enrolls the new members with rank 1: "toad". Application which were not old enough ( too fresh) will be included in the next wave. Whoever was qualified but didn't have gold approved at the time is disqualified and taken off applicant list ( although they are free to apply at any point after ). Whatever gold is gathered from tributes goes to guild treasury for guild master to manage for the benefit of the whole guild ( if he won't make good decision, he might be conspired against and killed/overthrown ).
 
 3) After being enrolled you'll be met with a list of quests that will trigger different cooldown periods and will yield different XP amount aswell. Some quests are unlocked only for certain ranks. Quests have loot and some of them give bonus to xp multipliers or some guild specific benefits. Every other rank requires rarityXp (different from guild xp) to be spent, increasing with each level.
+
     if ((_rank % 2) == 0) {
       rarityContract.spend_xp(_summoner,_rank * xp_cost);
     }
