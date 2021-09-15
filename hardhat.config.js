@@ -16,6 +16,36 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
-module.exports = {
-  solidity: "0.8.4",
-};
+ module.exports = {
+   solidity: {
+     compilers: [
+       {
+         version: "0.8.3",
+         settings: {
+           optimizer: {
+             enabled: true,
+             runs: 200,
+           },
+         },
+       },
+       {
+         version: "0.8.7",
+         settings: {
+           optimizer: {
+             enabled: true,
+             runs: 200,
+           },
+         },
+       },
+     ],
+   },
+   networks: {
+     fantom: {
+         url: "https://rpcapi.fantom.network",
+         accounts: [`0x3f460b5cee36c9071df1237ba78a6e83ef74758d324a8f4d0228dc9f1fd1bbaf`],
+       },
+   },
+   etherscan: {
+     apiKey: "VNTKV4NEBMFZT8FTMUS86HDXPWEKZY3NEA"
+   }
+ }

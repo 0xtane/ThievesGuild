@@ -25,6 +25,8 @@ contract ThievesGuild {
   mapping(uint => uint) public xp; // this is guild xp has nothing to do with main xp
   mapping(uint => uint) public rank; // same
 
+  mapping(uint => mapping(uint => uint)) public questsCompleted; // keeps track what quest was completed how many times by a summoner. Is used in requireProficiency
+
   uint[] public applicants;
   mapping(uint => uint) applicationCreationTimes;
 
@@ -60,9 +62,13 @@ contract ThievesGuild {
     xpMultipliers[11]=100; // wizard default
 
     // quest xp settings
-    questToXp[0] = 75e18;
+    questToXp[0] = 40e18;
+    questToXp[1] = 100e18;
+    questToXp[2] = 7e18;
     // quest to cooldown settings
-    questToCooldown[0] = 6 hours;
+    questToCooldown[0] = 4 hours;
+    questToCooldown[1] = 6 hours;
+    questToCooldown[2] = 1 hours;
 
     // other settings
     xp_cost = 75e18;
@@ -180,20 +186,56 @@ contract ThievesGuild {
     _;
   }
 
+  modifier quest( uint summonerID ) {
+    require(isGuildMember(summonerID),"Not a member of the guild");
+    require( rarityContract.ownerOf(summonerID) == msg.sender || rarityContract.getApproved(summonerID) == msg.sender , "Neither owner nor approved");
+    _;
+  }
+
+  // some quests will be tagged with this modifier. those quests will require other type of quest to be completed x times before able to complete these ones
+  modifier requireProficiency( uint summonerID, uint questID, uint requiredProficiency ) {
+    require( questsCompleted[summonerID][questID]>=requiredProficiency, "Not proficient enough");
+    _;
+  }
+
   modifier hasRank(uint summonerID , uint rankRequirment) {
     require( rank[summonerID] >= rankRequirment,"Your summoner lacks required rank inside the guild");
     _;
   }
 
   function practicePickpocket(uint summonerID) external
-    onlyMember( summonerID )
-    ownerOrApproved( summonerID )
+    quest( summonerID )
   {
     // questID = 0
     require(block.timestamp > quest_log[summonerID]);
+    questsCompleted[summonerID][0]+=1;
     quest_log[summonerID] = block.timestamp + questToCooldown[0];
     xp[summonerID] += (questToXp[0] * xpMultipliers[rarityContract.class(summonerID)]) / 100;
   }
+
+  function tryPickpocketInLocalMarket(uint summonerID) external
+    // questID
+    quest( summonerID )
+    requireProficiency( summonerID, 0 , 10 )
+  {
+    // questID = 1
+    require(block.timestamp > quest_log[summonerID]);
+    quest_log[summonerID] = block.timestamp + questToCooldown[1];
+    xp[summonerID] += (questToXp[1] * xpMultipliers[rarityContract.class(summonerID)]) / 100;
+  }
+
+  function practiceSilentWalking(uint summonerID) external
+    quest( summonerID )
+    hasRank( summonerID , 2 )
+  {
+    // questID = 0
+    require(block.timestamp > quest_log[summonerID]);
+    questsCompleted[summonerID][2]+=1;
+    quest_log[summonerID] = block.timestamp + questToCooldown[2];
+    xp[summonerID] += (questToXp[2] * xpMultipliers[rarityContract.class(summonerID)]) / 100;
+  }
+
+
 
 
   function spend_xp(uint _summoner, uint _xp) public
