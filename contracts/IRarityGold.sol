@@ -12,4 +12,6 @@ interface IRarityGold {
 
   function transfer(uint,uint,uint) external returns (bool);
 
+  function claim(uint) external;
+
 }

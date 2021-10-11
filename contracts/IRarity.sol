@@ -18,4 +18,13 @@ interface IRarity {
 
   function spend_xp(uint,uint) external;
 
+  function xp_required(uint) external pure returns(uint);
+
+  function xp(uint) external pure returns(uint);
+
+  function level_up(uint) external ;
+
+  function adventurers_log(uint) external view returns(uint);
+
+  function adventure(uint) external;
 }
