@@ -39,7 +39,7 @@ and your summoner needs to be atleast Level 2 to be able to submit an applicatio
 
 <h2>Quests</h2>
 There are some type of quests which are unlocked at a specific rank, or at a specific rank but to a specific class. There are also proficiency quests which require a quest of lower level to be completed x times.
-Example: practicePickpocket gives 40 xp and 4 hours cooldown, after doing the action 10 times you'll unlock tryPickpocketInLocalMarket which gives 100xp and 6 hours cooldown. One of the interesting features is fighter has -5% xp earning modifier in general, but will have a bonus in actions like mug() rob() which will require strength and intimidation to succeed. Needless to say skill/attributes should also influence outcomes.
+Example: practicePickpocket gives 40 xp and 4 hours cooldown, after doing the action 10 times you'll unlock tryPickpocketInLocalMarket which gives 100xp and 6 hours cooldown. One of the interesting features is fighter has -5% xp earning modifier in general, but will have a bonus in actions like mug() rob() which will require strength and intimidation to succeed. Needless to say skill/attributes should also influence outcommes.
 
 
 Current Rank titles: ( forgive my lazyness )
